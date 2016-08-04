@@ -17,7 +17,6 @@ shinyUI(
                 menuItem("Info", tabName = "info", icon = icon("info")),
                 HTML('<hr style="color: purple;">'),
                 HTML('<h4 style="padding-left: 12px; padding-bottom: 0px; margin: 0px;">Filters</h4>'),
-                # uiOutput("daterange"),
                 radioButtons('radio', '', c('Source Country'='Source..1.','Destination Country'='Primary.Destination.Country')),
                 uiOutput("filter"),
                 uiOutput("theme")
@@ -53,7 +52,7 @@ shinyUI(
               }
               .small-box > .inner {
                   width: 250px;
-                  padding-left: 30px  
+                  padding-left: 30px
               }
               .bg-purple {
                   top: 140px;
@@ -128,7 +127,7 @@ shinyUI(
                             HTML("<p>This application is meant to visualize the flow of transported LPG over seas between countries.</p>"),
                             HTML("<h3>Pages</h3>"),
                             HTML("<h4>Map</h4>"),
-                            HTML("<p>The map page displays arcs indicating trade of LPG defined as C3 + C4 from country to country. 
+                            HTML("<p>The map page displays arcs indicating trade of LPG defined as C3 + C4 from country to country.
                                  The more green and the wider the arc the greater the volume transported.</p>"),
                             HTML("<h4>Flow Chart</h4>"),
                             HTML("<p>A sankey chart visualizing the import and exports between countries filter  by the data range slider and selectors located in the side bar menu.</p>"),
@@ -143,7 +142,7 @@ shinyUI(
                     )
                 )
             ),
-            sliderInput("slider", "", 
+            sliderInput("slider", "",
                 min(ihs$Date, na.rm=TRUE),
                 max(ihs$Date, na.rm=TRUE),
                 value= c(min(ihs$Date, na.rm=TRUE), min(ihs$Date, na.rm=TRUE) + 30),
@@ -151,7 +150,7 @@ shinyUI(
                 timeFormat='%v',
                 animate=animationOptions(interval=250, loop=T)
             ),
-            #autoplay animation slider on app load
+            #hide value box on animation click
             tags$script("$(document).ready(function(){
                 $('.slider-animate-button').click(function(){
                     $('.col-sm-5').toggleClass( 'hide', 2000, 'easeOutSine')
@@ -164,5 +163,5 @@ shinyUI(
                 }
             });")
         )
-    ) 
+    )
 )
